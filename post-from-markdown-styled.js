@@ -39,13 +39,13 @@ function parseMarkdown(filePath) {
 
 // インラインCSSスタイル
 const styles = {
-  section: 'background: #f9f9f9; border-left: 4px solid #4a90e2; padding: 20px; margin: 30px 0; border-radius: 8px;',
-  infoBox: 'background: #fff; border: 2px solid #e0e0e0; padding: 20px; margin: 20px 0; border-radius: 8px;',
+  section: 'background: linear-gradient(to right, #f8f9fa 0%, #ffffff 100%); border-left: 5px solid #4a90e2; padding: 25px; margin: 35px 0; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);',
+  infoBox: 'background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%); border: 2px solid #2196f3; padding: 25px; margin: 25px 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(33,150,243,0.1);',
   accessBox: 'background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; margin: 15px 0;',
-  highlightBox: 'background: #fff9e6; border-left: 4px solid #ffa726; padding: 15px; margin: 15px 0;',
-  reviewBox: 'background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 8px; font-style: italic;',
-  ctaBox: 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; margin: 40px 0; border-radius: 12px; text-align: center;',
-  ctaButton: 'display: inline-block; background: white; color: #667eea; padding: 15px 40px; margin: 20px 0; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);',
+  highlightBox: 'background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%); border-left: 5px solid #ffa726; padding: 20px; margin: 20px 0; border-radius: 8px;',
+  reviewBox: 'background: #f5f5f5; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 4px solid #9c27b0; box-shadow: 0 2px 6px rgba(0,0,0,0.08);',
+  ctaBox: 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; margin: 50px 0; border-radius: 15px; text-align: center; box-shadow: 0 4px 20px rgba(102,126,234,0.3);',
+  ctaButton: 'display: inline-block; background: white; color: #667eea; padding: 18px 50px; margin: 25px 0; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease;',
   table: 'width: 100%; border-collapse: collapse; margin: 20px 0;',
   tableCell: 'border: 1px solid #ddd; padding: 12px; text-align: left;',
   tableHeader: 'background-color: #4a90e2; color: white; padding: 12px; text-align: left;'
@@ -112,6 +112,14 @@ function convertContent(content, sectionTitle) {
 
   // H4見出し
   html = html.replace(/^#### (.+)$/gm, '<h4 style="color: #666; margin-top: 15px; margin-bottom: 8px;">$1</h4>');
+
+  // 画像（Markdown形式をHTMLに変換）
+  html = html.replace(/!\[(.*?)\]\((.*?)\)\n\*(.*?)\*/g, (match, alt, url, caption) => {
+    return `<figure style="margin: 30px 0; text-align: center;">
+      <img src="${url}" alt="${alt}" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+      <figcaption style="margin-top: 10px; font-size: 14px; color: #666; font-style: italic;">${caption}</figcaption>
+    </figure>`;
+  });
 
   // 太字
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong style="color: #d32f2f;">$1</strong>');

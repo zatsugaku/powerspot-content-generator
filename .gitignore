@@ -19,3 +19,48 @@ npm-debug.log*
 # Testing
 coverage/
 .nyc_output/
+
+# Temporary files
+temp/
+*.zip
+
+# Preview files
+*-preview.html
+*-images.json
+*-with-images.md
+
+# CSV files
+*.csv
+
+# Old database files
+powerspot_database.json
+powerspot_database_fixed.json
+powerspot_db_clean.json
+powerspot_database_clean.json
+
+# HTML output files
+homepage-content.html
+
+# Old/deprecated scripts
+create-homepage.js
+create-homepage-v2.js
+create-homepage-v3.js
+create-homepage-v4.js
+convert-encoding.js
+fix-encoding.js
+fix-double-encoding.js
+decode-and-save.js
+decode-properly.js
+check-homepage-settings.js
+check-images-in-post.js
+get-homepage-content.js
+get-powerspot-post.js
+get-spot-attributes.js
+list-all-posts.js
+list-powerspot-posts.js
+update-permalink.js
+update-powerspot-attributes.js
+upload-image-to-wp.js
+download-and-upload-image.js
+search-aso-images.js
+cleanup-duplicate-posts.js

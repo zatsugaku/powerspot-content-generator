@@ -1,0 +1,46 @@
+# 各記事の推奨スラッグ（英語URL）
+
+## 既存記事のスラッグ変更用
+
+各記事の編集画面で「パーマリンク」→「URLスラッグ」を以下に変更してください：
+
+1. 伊勢神宮
+   スラッグ: ise-jingu
+   新URL: https://k005.net/ise-jingu/
+
+2. 伏見稲荷大社
+   スラッグ: fushimi-inari-taisha
+   新URL: https://k005.net/fushimi-inari-taisha/
+
+3. 斎場御嶽
+   スラッグ: sefa-utaki
+   新URL: https://k005.net/sefa-utaki/
+
+4. 金刀比羅宮
+   スラッグ: kotohira-gu
+   新URL: https://k005.net/kotohira-gu/
+
+5. 出雲大社
+   スラッグ: izumo-taisha
+   新URL: https://k005.net/izumo-taisha/
+
+6. 阿蘇山
+   スラッグ: mount-aso
+   新URL: https://k005.net/mount-aso/
+
+7. 日光東照宮
+   スラッグ: nikko-toshogu
+   新URL: https://k005.net/nikko-toshogu/
+
+---
+
+## 手順
+
+各記事について：
+1. 投稿 → 投稿一覧
+2. 記事タイトルをクリック
+3. 右側パネルの「パーマリンク」を展開
+4. 「URLスラッグ」に上記の英語スラッグを入力
+5. 「更新」をクリック
+
+すべて変更したら確認してください！

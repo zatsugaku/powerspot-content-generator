@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "postToolUse": {
+      "Write": "bash bin/suggest-claude-md-hook.sh"
+    }
+  }
+}
