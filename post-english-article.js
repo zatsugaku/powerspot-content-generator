@@ -246,13 +246,24 @@ async function postToWordPress(article, japanesePostId) {
 
   const htmlContent = markdownToHtml(article.content);
 
+  // 英語の言語タームIDを取得
+  console.log('🌐 Setting language to English...');
+  const langTermId = await getEnglishLanguageId(auth);
+
   // 基本の投稿データ
   const postData = {
     title: article.title,
     content: htmlContent,
     excerpt: article.excerpt || '',
-    status: 'draft'
+    status: 'draft',
+    lang: 'en'  // Polylang言語設定
   };
+
+  // 言語タクソノミーを設定
+  if (langTermId) {
+    postData.language = [langTermId];
+    console.log(`✅ Language term ID: ${langTermId}`);
+  }
 
   // 日本語版のタクソノミーをコピー
   if (japanesePostId) {
