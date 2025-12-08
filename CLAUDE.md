@@ -1,6 +1,6 @@
 # パワースポット記事自動生成システム - プロジェクトガイド
 
-最終更新: 2024年11月25日
+最終更新: 2025年12月8日
 
 ## 📋 プロジェクト概要
 
@@ -18,9 +18,12 @@ SEO集客（パワースポット記事）
 ### 主な機能
 - ✅ 142件のパワースポットデータベース管理
 - ✅ エネルギー値順での記事生成
-- ✅ 4,500-5,000文字の高品質記事作成
+- ✅ 4,500-5,000文字の高品質記事作成（日本語・英語）
 - ✅ HTMLプレビュー生成
-- ✅ WordPress自動投稿（スタイル付き）
+- ✅ WordPress自動投稿（カスタム投稿タイプ `powerspot`）
+- ✅ 全タクソノミー自動設定（地域・エリア・タイプ・ご利益・五行属性）
+- ✅ Pexels APIによる画像自動取得・アップロード
+- ✅ アイキャッチ画像・スラッグ自動設定
 - ✅ 投稿確認システム
 
 ### 技術スタック
@@ -49,8 +52,12 @@ powerspot-content-generator/
 │   └── example-high-quality.md          # 高品質記事の例
 │
 ├── articles/                            # 生成された記事
-│   ├── 伊勢神宮.md                      # サンプル記事
+│   ├── 伊勢神宮.md                      # 日本語記事
+│   ├── ise-jingu-en.md                  # 英語記事
 │   ├── 伊勢神宮-preview.html            # HTMLプレビュー
+│   └── ...
+│
+├── images/                              # ダウンロードした画像（一時保存）
 │   └── ...
 │
 ├── bin/                                 # ユーティリティスクリプト
@@ -202,19 +209,129 @@ python fix_json_encoding.py
 
 ---
 
-## 🔄 標準ワークフロー
+## 🔄 記事作成ワークフロー（Claude Code用）
 
-### 記事生成→投稿の完全フロー
+### ユーザーからの指示例
+「次の記事を作成してください」「松島の記事を作って」
+
+### Claude Codeが実行する完全フロー
+
+ユーザーから記事作成を依頼された場合、以下の手順を**すべて自動で**実行してください：
+
+#### Step 1: 対象パワースポットの特定
+```bash
+node generate-from-db.js 1 [開始位置]
+```
+- データベースからエネルギー値順で次のパワースポットを特定
+- 既存の `articles/` フォルダを確認し、未作成のスポットを選択
+
+#### Step 2: 日本語記事の作成
+- `instructions/ARTICLE_GENERATION_MASTER.md` を読み込み、指示に従う
+- **必須要件**:
+  - 4,500-5,000文字
+  - 11セクション構成
+  - 五行理論は一切触れない
+- 保存先: `articles/パワースポット名.md`
+
+#### Step 3: 英語記事の作成
+- 日本語記事を翻訳（直訳ではなく、英語圏読者向けに適応）
+- 日本文化の説明を追加
+- 保存先: `articles/slug-en.md`（例: `haguro-san-en.md`）
+
+#### Step 4: 画像の取得・アップロード
+```bash
+# Pexels APIで画像検索
+curl -H "Authorization: $PEXELS_API_KEY" \
+  "https://api.pexels.com/v1/search?query=キーワード&per_page=5"
+
+# 画像をダウンロード
+curl -sL "画像URL" -o images/slug.jpg
+
+# WordPressにアップロード（Node.jsスクリプトで実行）
+```
+- 検索キーワード例: "japanese shrine mountain", "golden temple buddhist"
+- アップロード後、画像IDを取得
+
+#### Step 5: POWERSPOT_MAPPING更新
+`post-from-markdown-styled.js` の `POWERSPOT_MAPPING` に以下を追加:
+```javascript
+'パワースポット名': {
+  rank: 順位,
+  region: '都道府県',
+  slug: 'url-slug',
+  type: 'スポットタイプ',
+  benefits: ['ご利益1', 'ご利益2', 'ご利益3'],
+  featuredImage: 画像ID
+},
+```
+
+#### Step 6: WordPress投稿
+```bash
+# 日本語記事を投稿
+node post-from-markdown-styled.js articles/パワースポット名.md
+
+# 英語記事を投稿
+node post-from-markdown-styled.js articles/slug-en.md
+```
+
+**自動設定される項目**:
+- カスタム投稿タイプ: `powerspot`
+- スラッグ（URL）
+- アイキャッチ画像
+- 地域（都道府県）
+- エリア（北海道/東北/関東/...）
+- スポットタイプ（神社/寺院/山・自然/...）
+- ご利益（複数選択可）
+- 五行属性（上位2つ）
+
+#### Step 7: 確認
+```bash
+node check-post.js [投稿ID]
+```
+
+### 重要な注意事項
+
+1. **画像について**
+   - Pexels APIで適切な画像を検索
+   - 「shrine」「temple」「mountain」「japan」などのキーワードを組み合わせる
+   - ダウンロード後、WordPressメディアライブラリにアップロード
+   - 取得した画像IDを `POWERSPOT_MAPPING` に登録
+
+2. **英語記事について**
+   - ファイル名: `{slug}-en.md`（例: `matsushima-en.md`）
+   - タイトル: `{Spot Name} | Complete Guide to {Prefecture}'s {特徴} Power Spot【{キーワード}】`
+   - 日本文化の背景説明を追加
+
+3. **タクソノミーID**
+   - 固定IDを使用（`TAXONOMY_IDS`参照）
+   - 新規作成しない（重複防止）
+
+### 作成済み記事一覧
+
+| 順位 | パワースポット | 日本語 | 英語 | 投稿ID(JP) | 投稿ID(EN) |
+|------|--------------|--------|------|-----------|-----------|
+| 1 | 伊勢神宮 | ✅ | ✅ | 2367 | - |
+| 2 | 伏見稲荷大社 | ✅ | ✅ | 2378 | - |
+| 3 | 斎場御嶽 | ✅ | ✅ | 2393 | - |
+| 4 | 金刀比羅宮 | ✅ | ✅ | 2399 | - |
+| 5 | 出雲大社 | ✅ | ✅ | 2405 | - |
+| 6 | 阿蘇山 | ✅ | ✅ | 2411 | - |
+| 7 | 日光東照宮 | ✅ | ✅ | 2419 | - |
+| 8 | 羽黒山神社 | ✅ | ✅ | 2463 | 2467 |
+| 9 | 中尊寺金色堂 | ✅ | ✅ | 2464 | 2468 |
+| 10 | 松島 | ❌ | ❌ | - | - |
+
+---
+
+## 📜 使用可能なスクリプト（詳細）
+
+### 旧ワークフロー（手動）
 
 ```bash
 # 1. データベース確認
 node generate-from-db.js 1 0
 
-# 2. Claude Codeで記事生成
-#    - instructions/ARTICLE_GENERATION_MASTER.md の指示に従う
-#    - 4,500-5,000文字
-#    - すべての必須セクションを含む
-#    - 五行理論は一切触れない
+# 2. 記事作成（手動でClaude Codeに依頼）
 
 # 3. HTMLプレビュー生成
 node generate-html-preview.js articles/パワースポット名.md
@@ -227,11 +344,6 @@ node post-from-markdown-styled.js articles/パワースポット名.md
 
 # 6. 投稿確認
 node check-post.js [投稿ID]
-
-# 7. WordPress管理画面で最終確認
-# https://k005.net/wp-admin/
-
-# 8. 公開
 ```
 
 ---
@@ -360,6 +472,9 @@ WP_APP_PASSWORD=Ml5H 2psf K1CK 3BLl fIcV ulQn
 # 縁診断アプリ連携
 EN_SHINDAN_URL=https://enguide.info
 
+# Pexels API (画像検索)
+PEXELS_API_KEY=uILLDNjt6qvSf2jDR4Flg0ifPnEXrTwpaRxxie28JVS7IvbiqnwhsCpr
+
 # Claude API (記事生成用)
 ANTHROPIC_API_KEY=sk-ant-api03-...
 ```
@@ -457,19 +572,25 @@ node read-powerspot-db.js
 
 ## 🔮 今後の改善点
 
-### 短期（1-2週間）
-- [ ] アイキャッチ画像の自動生成/選定
-- [ ] カテゴリ・タグの自動設定
+### 実装済み ✅
+- [x] アイキャッチ画像の自動選定（Pexels API）
+- [x] 画像のWordPress自動アップロード
+- [x] カテゴリ・タクソノミーの自動設定
+- [x] 英語記事の作成・投稿
+- [x] スラッグの自動設定
+
+### 短期
 - [ ] メタディスクリプション自動生成
 - [ ] 内部リンク自動挿入
+- [ ] 日英記事のPolylang連携
 
-### 中期（1-2ヶ月）
+### 中期
 - [ ] バッチ記事生成（一度に10件）
 - [ ] 記事の自動公開（下書き→公開）
 - [ ] SEOスコア自動チェック
 - [ ] 競合記事の分析・比較
 
-### 長期（3-6ヶ月）
+### 長期
 - [ ] AI画像生成統合（DALL-E, Midjourney）
 - [ ] 記事の自動更新（情報の鮮度維持）
 - [ ] A/Bテスト機能
@@ -529,6 +650,6 @@ chore: その他（ビルド、設定など）
 
 ---
 
-**最終更新**: 2024年11月25日
+**最終更新**: 2025年12月8日
 **管理者**: powerspot-content-generator プロジェクトチーム
 **Claude Code自動更新システム**: 有効
