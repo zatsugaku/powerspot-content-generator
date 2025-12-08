@@ -90,32 +90,32 @@ const POWERSPOT_MAPPING = {
   '松島': {
     rank: 10, region: '宮城県', slug: 'matsushima',
     type: '山・自然', benefits: ['厄除け・開運', '心願成就', '縁結び・恋愛運'],
-    featuredImage: null
+    featuredImage: 2469
   },
   '大崎八幡宮': {
     rank: 11, region: '宮城県', slug: 'osaki-hachimangu',
     type: '神社', benefits: ['厄除け・開運', '商売繁盛', '勝負運'],
-    featuredImage: null
+    featuredImage: 2472
   },
   '熱田神宮': {
     rank: 12, region: '愛知県', slug: 'atsuta-jingu',
     type: '神社', benefits: ['厄除け・開運', '家内安全', '商売繁盛'],
-    featuredImage: null
+    featuredImage: 2475
   },
   '北海道神宮': {
     rank: 13, region: '北海道', slug: 'hokkaido-jingu',
     type: '神社', benefits: ['厄除け・開運', '縁結び・恋愛運', '家内安全'],
-    featuredImage: null
+    featuredImage: 2478
   },
   '樽前山神社': {
     rank: 14, region: '北海道', slug: 'tarumaesan-jinja',
     type: '神社', benefits: ['厄除け・開運', '商売繁盛', '心願成就'],
-    featuredImage: null
+    featuredImage: 2481
   },
   '阿寒湖': {
     rank: 15, region: '北海道', slug: 'akan-lake',
     type: '湖・海', benefits: ['厄除け・開運', '心願成就', '縁結び・恋愛運'],
-    featuredImage: null
+    featuredImage: 2484
   },
 };
 
@@ -371,11 +371,18 @@ function convertContent(content, sectionTitle) {
   // H4見出し
   html = html.replace(/^#### (.+)$/gm, '<h4 style="color: #666; margin-top: 15px; margin-bottom: 8px;">$1</h4>');
 
-  // 画像（Markdown形式をHTMLに変換）
+  // 画像（Markdown形式をHTMLに変換）- キャプション付き
   html = html.replace(/!\[(.*?)\]\((.*?)\)\n\*(.*?)\*/g, (match, alt, url, caption) => {
     return `<figure style="margin: 30px 0; text-align: center;">
       <img src="${url}" alt="${alt}" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
       <figcaption style="margin-top: 10px; font-size: 14px; color: #666; font-style: italic;">${caption}</figcaption>
+    </figure>`;
+  });
+
+  // 画像（シンプル形式）- キャプションなし
+  html = html.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, url) => {
+    return `<figure style="margin: 30px 0; text-align: center;">
+      <img src="${url}" alt="${alt}" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
     </figure>`;
   });
 
