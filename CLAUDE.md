@@ -337,7 +337,7 @@ node post-from-markdown-styled.js articles/slug-en.md
 
 **自動設定される項目**:
 - カスタム投稿タイプ: `powerspot`
-- スラッグ（URL）
+- スラッグ（URL）※日本語記事のみ
 - アイキャッチ画像
 - 地域（都道府県）
 - エリア（北海道/東北/関東/...）
@@ -345,12 +345,29 @@ node post-from-markdown-styled.js articles/slug-en.md
 - ご利益（複数選択可）
 - 五行属性（上位2つ）
 
-#### Step 7: 投稿確認
+#### Step 7: 英語記事のスラッグ修正（必須）
+
+英語記事は投稿時にタイトル全体がスラッグになるため、投稿後に短いスラッグに修正する：
+
+```javascript
+// WordPress REST APIでスラッグを更新
+axios.post(WP_SITE_URL + '/wp-json/wp/v2/powerspot/' + postId,
+  { slug: 'spot-name-en' },  // 例: 'hokkaido-jingu-en'
+  { headers: { Authorization: 'Basic ' + auth } }
+);
+```
+
+**スラッグ命名規則**:
+- 形式: `{日本語記事のスラッグ}-en`
+- 例: `hokkaido-jingu` → `hokkaido-jingu-en`
+- 例: `atsuta-jingu` → `atsuta-jingu-en`
+
+#### Step 8: 投稿確認
 ```bash
 node check-post.js [投稿ID]
 ```
 
-#### Step 8: 検証・修正
+#### Step 9: 検証・修正
 
 投稿後、以下の項目を検証し、問題があれば修正する：
 
@@ -377,7 +394,8 @@ node check-post.js [投稿ID]
 | チェック項目 | 確認方法 |
 |-------------|---------|
 | カスタム投稿タイプ | `powerspot`になっているか |
-| スラッグ | 英語で正しく設定されているか |
+| 日本語スラッグ | 短い英語スラッグか（例: `hokkaido-jingu`） |
+| 英語スラッグ | `{slug}-en`形式か（例: `hokkaido-jingu-en`） |
 | アイキャッチ画像 | 設定されているか |
 | 地域（都道府県） | 正しい都道府県か |
 | エリア | 地域に対応したエリアか |
@@ -389,6 +407,7 @@ node check-post.js [投稿ID]
 1. **記事内容の問題** → Markdownファイルを修正し、再投稿
 2. **タクソノミーの問題** → WordPress管理画面で修正、または`POWERSPOT_MAPPING`を修正して再投稿
 3. **画像の問題** → 新しい画像を検索・アップロードし、投稿を更新
+4. **英語スラッグが長い** → Step 7の手順でスラッグを修正
 
 **E. 検証完了の報告**
 検証が完了したら、以下の形式で報告：
