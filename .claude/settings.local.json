@@ -24,7 +24,11 @@
       "Bash(git commit -m \"$(cat <<''EOF''\nfeat: 記事作成ワークフロー自動化と羽黒山神社・中尊寺金色堂記事追加\n\n- CLAUDE.md: 完全自動化ワークフロー（Step 1-7）を追加\n- post-from-markdown-styled.js: タクソノミー・画像自動設定機能を追加\n- 羽黒山神社（日本語・英語）記事を追加\n- 中尊寺金色堂（日本語・英語）記事を追加\n- Pexels APIによる画像取得・アップロード対応\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
       "Bash(git commit:*)",
       "Bash(node check-post.js:*)",
-      "WebFetch(domain:k005.net)"
+      "WebFetch(domain:k005.net)",
+      "Bash(for id in 2549 2540 2538 2536 2534 2525 2471 2468 2467)",
+      "Bash(do)",
+      "Bash(done)",
+      "WebFetch(domain:polylang.pro)"
     ],
     "deny": [],
     "ask": []
