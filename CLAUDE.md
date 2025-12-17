@@ -69,6 +69,7 @@ powerspot-content-generator/
 ├── generate-html-preview.js             # HTMLプレビュー生成
 ├── post-from-markdown-styled.js         # WordPress投稿（スタイル付き）
 ├── check-post.js                        # 投稿確認スクリプト
+├── add-related-links.js                 # 既存記事に関連リンクを追加
 │
 ├── read-powerspot-db.js                 # データベース読み込み
 ├── fix_json_encoding.py                 # JSON文字化け修正（Python）
@@ -197,6 +198,30 @@ node check-post.js 2358
 - 投稿ID、タイトル、ステータス
 - プレビューURL、管理画面URL
 - 文字数、作成日時
+
+#### `add-related-links.js`
+既存のWordPress記事に関連リンクセクションを追加
+
+```bash
+# 全記事に関連リンクを追加
+node add-related-links.js
+
+# 特定の記事のみ更新
+node add-related-links.js --single=ise-jingu
+
+# 実行前確認（dry-run）
+node add-related-links.js --dry-run
+```
+
+**機能**:
+- ピラーページへのリンク追加
+- 同じ地域のパワースポット記事をリンク（最大3件）
+- 同じご利益のパワースポット記事をリンク（最大3件）
+- 既にリンクがある記事はスキップ
+
+**使用タイミング**:
+- 新規記事を複数投稿した後
+- ピラーページを作成・更新した後
 
 ### データ処理
 
