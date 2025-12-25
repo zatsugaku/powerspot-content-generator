@@ -1,7 +1,10 @@
 {
   "hooks": {
-    "postToolUse": {
-      "Write": "node bin/suggest-claude-md-hook.js"
-    }
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": ["node bin/suggest-claude-md-hook.js"]
+      }
+    ]
   }
 }
