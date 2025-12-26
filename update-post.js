@@ -1,0 +1,225 @@
+#!/usr/bin/env node
+// 既存のWordPress投稿をスタイル付きHTMLで更新
+
+require('dotenv').config();
+const fs = require('fs');
+const axios = require('axios');
+
+const WP_SITE_URL = process.env.WP_SITE_URL;
+const WP_USERNAME = process.env.WP_USERNAME;
+const WP_APP_PASSWORD = process.env.WP_APP_PASSWORD;
+const EN_SHINDAN_URL = process.env.EN_SHINDAN_URL || 'https://enguide.info';
+
+const postId = process.argv[2];
+const mdFile = process.argv[3];
+
+if (!postId || !mdFile) {
+  console.error('使用方法: node update-post.js [投稿ID] [Markdownファイル]');
+  console.log('例: node update-post.js 2376 articles/伊勢神宮.md');
+  process.exit(1);
+}
+
+const auth = Buffer.from(`${WP_USERNAME}:${WP_APP_PASSWORD}`).toString('base64');
+
+// インラインCSSスタイル（post-from-markdown-styled.jsと同じ）
+const styles = {
+  section: 'background: linear-gradient(to right, #f8f9fa 0%, #ffffff 100%); border-left: 5px solid #4a90e2; padding: 25px; margin: 35px 0; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);',
+  infoBox: 'background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%); border: 2px solid #2196f3; padding: 25px; margin: 25px 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(33,150,243,0.1);',
+  accessBox: 'background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; margin: 15px 0;',
+  highlightBox: 'background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%); border-left: 5px solid #ffa726; padding: 20px; margin: 20px 0; border-radius: 8px;',
+  reviewBox: 'background: #f5f5f5; padding: 20px; margin: 15px 0; border-radius: 10px; border-left: 4px solid #9c27b0; box-shadow: 0 2px 6px rgba(0,0,0,0.08);',
+  ctaBox: 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; margin: 50px 0; border-radius: 15px; text-align: center; box-shadow: 0 4px 20px rgba(102,126,234,0.3);',
+  ctaButton: 'display: inline-block; background: white; color: #667eea; padding: 18px 50px; margin: 25px 0; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease;',
+  table: 'width: 100%; border-collapse: collapse; margin: 20px 0;',
+  tableCell: 'border: 1px solid #ddd; padding: 12px; text-align: left;',
+  tableHeader: 'background-color: #4a90e2; color: white; padding: 12px; text-align: left;'
+};
+
+// コンテンツを変換
+function convertContent(content, sectionTitle) {
+  let html = content;
+
+  // H3見出し
+  html = html.replace(/^### (.+)$/gm, (match, title) => {
+    if (sectionTitle && (sectionTitle.includes('アクセス') || sectionTitle.includes('基本情報'))) {
+      return `<h3 style="color: #2196f3; margin-top: 20px; margin-bottom: 10px; font-size: 18px;">📍 ${title}</h3>`;
+    } else if (sectionTitle && (sectionTitle.includes('グルメ') || sectionTitle.includes('カフェ') || sectionTitle.includes('周辺情報'))) {
+      return `<h3 style="color: #ff6b6b; margin-top: 20px; margin-bottom: 10px; font-size: 18px;">🍽️ ${title}</h3>`;
+    } else if (sectionTitle && sectionTitle.includes('ご利益')) {
+      return `<h3 style="color: #9c27b0; margin-top: 20px; margin-bottom: 10px; font-size: 18px;">✨ ${title}</h3>`;
+    }
+    return `<h3 style="color: #555; margin-top: 20px; margin-bottom: 10px;">${title}</h3>`;
+  });
+
+  // H4見出し
+  html = html.replace(/^#### (.+)$/gm, '<h4 style="color: #666; margin-top: 15px; margin-bottom: 8px;">$1</h4>');
+
+  // 画像（Markdown形式をHTMLに変換）- キャプション付き（CRLF/LF両対応）
+  // パターン: ![alt](url)\r?\n*caption*
+  html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)\r?\n\*([^*]+)\*/g, (match, alt, url, caption) => {
+    return `<figure style="margin: 30px 0; text-align: center;">
+      <img src="${url}" alt="${alt}" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+      <figcaption style="margin-top: 10px; font-size: 14px; color: #666; font-style: italic;">${caption}</figcaption>
+    </figure>`;
+  });
+
+  // 画像（シンプル形式）- キャプションなし
+  html = html.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, url) => {
+    return `<figure style="margin: 30px 0; text-align: center;">
+      <img src="${url}" alt="${alt}" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+    </figure>`;
+  });
+
+  // 太字
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong style="color: #d32f2f;">$1</strong>');
+
+  // リンク
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color: #4a90e2; text-decoration: none; border-bottom: 1px solid #4a90e2;">$1</a>');
+
+  // リスト
+  html = html.replace(/^- (.+)$/gm, '<li style="margin: 8px 0; line-height: 1.8;">$1</li>');
+  html = html.replace(/(<li[^>]*>.*?<\/li>\n?)+/g, '<ul style="padding-left: 25px; margin: 15px 0;">$&</ul>');
+
+  // 口コミ・体験談の特殊処理
+  if (sectionTitle && (sectionTitle.includes('口コミ') || sectionTitle.includes('体験談'))) {
+    html = html.replace(/「(.+?)」（(.+?)）/g, (match, quote, author) => {
+      return `<div style="${styles.reviewBox}">
+        <p style="font-size: 16px; color: #333; margin-bottom: 10px;">"${quote}"</p>
+        <p style="text-align: right; color: #666; font-size: 14px;">— ${author}</p>
+      </div>`;
+    });
+  }
+
+  // FAQの特殊処理
+  if (sectionTitle && sectionTitle.includes('よくある質問')) {
+    html = html.replace(/Q(\d+): (.+?)(?=\n|$)/g, '<p style="font-weight: bold; color: #4a90e2; margin-top: 20px; margin-bottom: 5px;">❓ Q$1: $2</p>');
+    html = html.replace(/A: (.+?)(?=\n\n|$)/gs, '<p style="margin-left: 20px; color: #555; line-height: 1.8;">💡 A: $1</p>');
+  }
+
+  // 季節のおすすめ度（★）
+  html = html.replace(/(★+☆*)/g, '<span style="color: #ffa726; font-size: 18px;">$1</span>');
+
+  // 段落
+  html = html.replace(/\n\n/g, '</p>\n<p style="line-height: 1.8; margin: 15px 0;">');
+  html = '<p style="line-height: 1.8; margin: 15px 0;">' + html + '</p>';
+
+  // 空の<p>タグを削除
+  html = html.replace(/<p[^>]*>\s*<\/p>/g, '');
+  html = html.replace(/<p[^>]*>\s*<ul/g, '<ul');
+  html = html.replace(/<\/ul>\s*<\/p>/g, '</ul>');
+  // h2, h3, h4タグを囲む不要な<p>タグを削除
+  html = html.replace(/<p[^>]*>\s*(<h[234][^>]*>)/g, '$1');
+  html = html.replace(/(<\/h[234]>)\s*<\/p>/g, '$1');
+  html = html.replace(/<p[^>]*>\s*<figure/g, '<figure');
+  html = html.replace(/<\/figure>\s*<\/p>/g, '</figure>');
+  html = html.replace(/<p[^>]*>\s*<div/g, '<div');
+  html = html.replace(/<\/div>\s*<\/p>/g, '</div>');
+
+  return html;
+}
+
+// 記事下部に控えめなCTAを追加
+function addFooterCTA() {
+  return `
+  <div style="text-align: center; padding: 30px; background: #f9f9f9; margin: 40px 0; border-radius: 8px; border: 1px solid #e0e0e0;">
+    <p style="color: #666; font-size: 14px; margin: 0; line-height: 1.8;">
+      💡 あなたに最適なパワースポットを知りたい方は
+      <a href="${EN_SHINDAN_URL}" target="_blank" rel="noopener" style="color: #4a90e2; font-weight: bold; text-decoration: none; border-bottom: 1px solid #4a90e2;">無料の相性診断</a>をお試しください（3分で完了）
+    </p>
+  </div>`;
+}
+
+// Markdownをスタイル付きHTMLに変換
+function markdownToHtml(markdown) {
+  // タイトル行を除去
+  let content = markdown.replace(/^# .+$/m, '').trim();
+
+  // セクション分割
+  let sections = content.split(/(?=^## )/gm);
+  let html = '';
+
+  sections.forEach((section, index) => {
+    if (!section.trim()) return;
+
+    // セクションタイトルを抽出
+    const titleMatch = section.match(/^## (.+)$/m);
+    const sectionTitle = titleMatch ? titleMatch[1] : '';
+    const sectionContent = section.replace(/^## .+$/m, '').trim();
+
+    // セクションタイプを判定
+    let sectionStyle = styles.section;
+    let sectionClass = 'powerspot-section';
+
+    if (sectionTitle.includes('基本情報') || sectionTitle.includes('アクセス')) {
+      sectionStyle = styles.infoBox;
+      sectionClass = 'info-section';
+    } else if (sectionTitle.includes('口コミ') || sectionTitle.includes('体験談')) {
+      sectionClass = 'review-section';
+    } else if (sectionTitle.includes('ご利益')) {
+      sectionStyle = 'background: linear-gradient(135deg, #f3e5f5 0%, #ffffff 100%); border-left: 5px solid #9c27b0; padding: 25px; margin: 35px 0; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);';
+    } else if (sectionTitle.includes('訪問時期') || sectionTitle.includes('ベスト')) {
+      sectionStyle = 'background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%); border-left: 5px solid #4caf50; padding: 25px; margin: 35px 0; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);';
+    }
+
+    // セクション開始
+    html += `<div class="${sectionClass}" style="${sectionStyle}">`;
+
+    if (sectionTitle) {
+      let icon = '';
+      if (sectionTitle.includes('魅力')) icon = '✨ ';
+      else if (sectionTitle.includes('ご利益')) icon = '🙏 ';
+      else if (sectionTitle.includes('訪問時期') || sectionTitle.includes('ベスト')) icon = '📅 ';
+      else if (sectionTitle.includes('参拝') || sectionTitle.includes('見学')) icon = '⛩️ ';
+      else if (sectionTitle.includes('基本情報')) icon = '📍 ';
+      else if (sectionTitle.includes('周辺')) icon = '🗺️ ';
+      else if (sectionTitle.includes('口コミ') || sectionTitle.includes('体験談')) icon = '💬 ';
+      else if (sectionTitle.includes('よくある質問')) icon = '❓ ';
+      else if (sectionTitle.includes('まとめ')) icon = '📝 ';
+
+      html += `<h2 style="color: #333; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-bottom: 20px;">${icon}${sectionTitle}</h2>`;
+    }
+
+    // コンテンツを変換
+    html += convertContent(sectionContent, sectionTitle);
+
+    html += '</div>';
+  });
+
+  // 記事下部にCTAを追加
+  html += addFooterCTA();
+
+  return html;
+}
+
+// Markdownファイルを読み込み
+const md = fs.readFileSync(mdFile, 'utf-8');
+const htmlContent = markdownToHtml(md);
+
+async function updatePost() {
+  try {
+    console.log(`投稿ID ${postId} を更新中...`);
+
+    const res = await axios.post(
+      `${WP_SITE_URL}/wp-json/wp/v2/powerspot/${postId}`,
+      { content: htmlContent },
+      {
+        headers: {
+          'Authorization': `Basic ${auth}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    console.log('更新成功！');
+    console.log('投稿ID:', res.data.id);
+    console.log('タイトル:', res.data.title.rendered);
+    console.log('編集URL:', `${WP_SITE_URL}/wp-admin/post.php?post=${res.data.id}&action=edit`);
+    console.log('プレビュー:', `${WP_SITE_URL}/powerspot/${res.data.slug}/`);
+
+  } catch (e) {
+    console.error('エラー:', e.response?.data || e.message);
+    process.exit(1);
+  }
+}
+
+updatePost();
