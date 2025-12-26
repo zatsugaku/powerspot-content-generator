@@ -1,0 +1,242 @@
+[
+  {
+    "rank": 1,
+    "name": "伊勢神宮",
+    "region": "三重県",
+    "energy": 0.98
+  },
+  {
+    "rank": 2,
+    "name": "伏見稲荷大社",
+    "region": "京都府",
+    "energy": 0.97
+  },
+  {
+    "rank": 3,
+    "name": "æ–Žå ´å¾¡å¶½",
+    "region": "沖縄県",
+    "energy": 0.97
+  },
+  {
+    "rank": 4,
+    "name": "金刀比羅宮",
+    "region": "香川県",
+    "energy": 0.96
+  },
+  {
+    "rank": 5,
+    "name": "出雲大社",
+    "region": "å³¶æ ¹çœŒ",
+    "energy": 0.96
+  },
+  {
+    "rank": 6,
+    "name": "阿蘇山",
+    "region": "熊本県",
+    "energy": 0.96
+  },
+  {
+    "rank": 7,
+    "name": "日光東照宮",
+    "region": "æ ƒæœ¨çœŒ",
+    "energy": 0.95
+  },
+  {
+    "rank": 8,
+    "name": "羽黒山神社",
+    "region": "山形県",
+    "energy": 0.95
+  },
+  {
+    "rank": 9,
+    "name": "中尊寺é‡'色å '",
+    "region": "岩手県",
+    "energy": 0.95
+  },
+  {
+    "rank": 10,
+    "name": "松島",
+    "region": "宮城県",
+    "energy": 0.95
+  },
+  {
+    "rank": 11,
+    "name": "大崎八幡宮",
+    "region": "宮城県",
+    "energy": 0.95
+  },
+  {
+    "rank": 12,
+    "name": "熱田神宮",
+    "region": "愛知県",
+    "energy": 0.95
+  },
+  {
+    "rank": 13,
+    "name": "北海道神宮",
+    "region": "北海道",
+    "energy": 0.95
+  },
+  {
+    "rank": 14,
+    "name": "樽前山神社",
+    "region": "北海道",
+    "energy": 0.95
+  },
+  {
+    "rank": 15,
+    "name": "阿寒湖",
+    "region": "北海道",
+    "energy": 0.95
+  },
+  {
+    "rank": 16,
+    "name": "定山渓神社",
+    "region": "北海道",
+    "energy": 0.95
+  },
+  {
+    "rank": 17,
+    "name": "金剱宮",
+    "region": "石川県",
+    "energy": 0.95
+  },
+  {
+    "rank": 18,
+    "name": "住吉大社",
+    "region": "大阪府",
+    "energy": 0.95
+  },
+  {
+    "rank": 19,
+    "name": "沖宮",
+    "region": "沖縄県",
+    "energy": 0.94
+  },
+  {
+    "rank": 20,
+    "name": "大山祇神社",
+    "region": "愛媛県",
+    "energy": 0.93
+  },
+  {
+    "rank": 21,
+    "name": "美保神社",
+    "region": "å³¶æ ¹çœŒ",
+    "energy": 0.93
+  },
+  {
+    "rank": 22,
+    "name": "宇佐神宮",
+    "region": "大分県",
+    "energy": 0.93
+  },
+  {
+    "rank": 23,
+    "name": "那智の滝",
+    "region": "和歌山県",
+    "energy": 0.93
+  },
+  {
+    "rank": 24,
+    "name": "筑波山神社",
+    "region": "茨城県",
+    "energy": 0.92
+  },
+  {
+    "rank": 25,
+    "name": "御嶽神社",
+    "region": "東京都",
+    "energy": 0.92
+  },
+  {
+    "rank": 26,
+    "name": "石鎚神社",
+    "region": "愛媛県",
+    "energy": 0.92
+  },
+  {
+    "rank": 27,
+    "name": "諏訪大社",
+    "region": "長野県",
+    "energy": 0.92
+  },
+  {
+    "rank": 28,
+    "name": "厳島神社",
+    "region": "広島県",
+    "energy": 0.92
+  },
+  {
+    "rank": 29,
+    "name": "佐渡金山",
+    "region": "新潟県",
+    "energy": 0.92
+  },
+  {
+    "rank": 30,
+    "name": "晴明神社",
+    "region": "京都府",
+    "energy": 0.92
+  },
+  {
+    "rank": 31,
+    "name": "祐徳稲荷神社",
+    "region": "佐賀県",
+    "energy": 0.92
+  },
+  {
+    "rank": 32,
+    "name": "識名宮",
+    "region": "沖縄県",
+    "energy": 0.92
+  },
+  {
+    "rank": 33,
+    "name": "恐山",
+    "region": "青森県",
+    "energy": 0.92
+  },
+  {
+    "rank": 34,
+    "name": "乗鞍岳",
+    "region": "岐阜県",
+    "energy": 0.91
+  },
+  {
+    "rank": 35,
+    "name": "鳥海山",
+    "region": "秋田県",
+    "energy": 0.9
+  },
+  {
+    "rank": 36,
+    "name": "龍泉洞",
+    "region": "岩手県",
+    "energy": 0.9
+  },
+  {
+    "rank": 37,
+    "name": "鹽竈神社",
+    "region": "宮城県",
+    "energy": 0.9
+  },
+  {
+    "rank": 38,
+    "name": "毛越寺",
+    "region": "岩手県",
+    "energy": 0.9
+  },
+  {
+    "rank": 39,
+    "name": "十和田湖",
+    "region": "青森県",
+    "energy": 0.9
+  },
+  {
+    "rank": 40,
+    "name": "洞爺湖",
+    "region": "北海道",
+    "energy": 0.9
+  }
+]

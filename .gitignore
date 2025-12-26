@@ -11,6 +11,7 @@ Thumbs.db
 # Editor files
 .vscode/
 .idea/
+.claude/settings.local.json
 
 # Logs
 *.log
@@ -64,3 +65,6 @@ upload-image-to-wp.js
 download-and-upload-image.js
 search-aso-images.js
 cleanup-duplicate-posts.js
+
+# Test assets (do not commit)
+images/test-okinogu-*.jpg
