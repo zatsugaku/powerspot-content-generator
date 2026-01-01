@@ -1,0 +1,188 @@
+[dotenv@17.2.3] injecting env (7) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+================================================================================
+WordPressパワースポット投稿の画像検証（詳細版）
+================================================================================
+
+検証対象: 20件
+
+ID:2615 [hakone-jinja] - ✅ 適切
+  タイトル: 箱根神社 | 神奈川県のパワースポット完全ガイド【芦ノ湖・九頭龍神社・アクセス情報】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2615-hakone-jinja-1-1.jpg
+    2. pixabay-2615-hakone-jinja-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2616 [hakone-jinja-en] - ✅ 適切
+  タイトル: Hakone Shrine | Complete Guide to Kanagawa&#8217;s Power Spot【Lake Ashi, Kuzuryu Shrine, Access &#038; Area Info】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2616-hakone-jinja-en-1-1.jpg
+    2. pixabay-2616-hakone-jinja-en-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2614 [enoshima-jinja-en] - ✅ 適切
+  タイトル: Enoshima Shrine | Complete Guide to Kanagawa&#8217;s Power Spot【Benzaiten, Matchmaking, Access &#038; Area Info】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2614-enoshima-jinja-en-1-1.jpg
+    2. pixabay-2614-enoshima-jinja-en-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2613 [enoshima-jinja] - ✅ 適切
+  タイトル: 江島神社 | 神奈川県のパワースポット完全ガイド【弁財天・縁結び・アクセス情報】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2613-enoshima-jinja-1-1.jpg
+    2. pixabay-2613-enoshima-jinja-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2612 [tojinbo-en] - ✅ 適切
+  タイトル: Tojinbo | Complete Guide to Fukui&#8217;s Power Spot【Columnar Joints, Sea Cliffs, Access &#038; Area Info】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2612-tojinbo-en-1-1.jpg
+    2. pixabay-2612-tojinbo-en-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2611 [tojinbo] - ✅ 適切
+  タイトル: 東尋坊 | 福井県のパワースポット完全ガイド【柱状節理・断崖絶壁・アクセス情報】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2611-tojinbo-1-1.jpg
+    2. pixabay-2611-tojinbo-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2610 [kawaguchiko-en] - ✅ 適切
+  タイトル: Lake Kawaguchi | Complete Guide to Yamanashi&#8217;s Power Spot【Mount Fuji, Inverted Fuji, Access &#038; Area Info】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2610-kawaguchiko-en-1-1.jpg
+    2. pixabay-2610-kawaguchiko-en-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2609 [kawaguchiko] - ✅ 適切
+  タイトル: 河口湖 | 山梨県のパワースポット完全ガイド【富士山・逆さ富士・アクセス情報】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2609-kawaguchiko-1-1.jpg
+    2. pixabay-2609-kawaguchiko-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2608 [kamui-kotan-en] - ✅ 適切
+  タイトル: Kamui Kotan | Complete Guide to Hokkaido&#8217;s Power Spot【Ainu Sacred Site, Rock Formations, Access &#038; Area Info】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2608-kamui-kotan-en-1-1.jpg
+    2. pixabay-2608-kamui-kotan-en-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2607 [kamui-kotan] - ✅ 適切
+  タイトル: 神居古潭 | 北海道のパワースポット完全ガイド【アイヌ聖地・奇岩・アクセス情報】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2607-kamui-kotan-1-1.jpg
+    2. pixabay-2607-kamui-kotan-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2606 [chitose-jinja-en] - ✅ 適切
+  タイトル: Chitose Shrine | Complete Guide to Hokkaido&#8217;s Power Spot【Near New Chitose Airport, Matchmaking, Access &#038; Area Info】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2606-chitose-jinja-en-1-1.jpg
+    2. pixabay-2606-chitose-jinja-en-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2605 [chitose-jinja] - ✅ 適切
+  タイトル: 千歳神社 | 北海道のパワースポット完全ガイド【新千歳空港近く・縁結び・アクセス情報】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2605-chitose-jinja-1-1.jpg
+    2. pixabay-2605-chitose-jinja-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2604 [sounkyo-en] - ✅ 適切
+  タイトル: Sounkyo Gorge | Complete Guide to Hokkaido&#8217;s Mountain Power Spot【Daisetsuzan, Columnar Joints, Access &#038; Area Info】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2604-sounkyo-en-1-1.jpg
+    2. pixabay-2604-sounkyo-en-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2603 [sounkyo] - ✅ 適切
+  タイトル: 層雲峡 | 北海道のパワースポット完全ガイド【大雪山・柱状節理・アクセス情報】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2603-sounkyo-1-1.jpg
+    2. pixabay-2603-sounkyo-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2585 [osorezan-en] - ✅ 適切
+  タイトル: Mount Osore | Complete Guide to Aomori&#8217;s Mystical Power Spot【One of Japan&#8217;s Three Great Sacred Sites, Itako Spirit Mediums, Access &#038; Area Info】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2585-osorezan-en-1-1.jpg
+    2. pixabay-2585-osorezan-en-2-1.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2584 [osorezan] - ✅ 適切
+  タイトル: 恐山 | 青森県のパワースポット完全ガイド【日本三大霊場・イタコの口寄せ・アクセス情報】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2584-1.jpg
+    2. pixabay-2584-2.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2583 [shikina-gu-en] - ✅ 適切
+  タイトル: Shikina-gu Shrine | Complete Guide to Okinawa&#8217;s Sacred Power Spot【Ryukyu Eight Shrines, Fertility Blessings, Access &#038; Area Info】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2583-1.jpg
+    2. pixabay-2583-2.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2582 [shikina-gu] - ✅ 適切
+  タイトル: 識名宮 | 沖縄県のパワースポット完全ガイド【琉球八社・縁結び・アクセス情報】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2582-1.jpg
+    2. pixabay-2582-2.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2581 [yutoku-inari-jinja-en] - ✅ 適切
+  タイトル: Yutoku Inari Shrine | Complete Guide to Saga&#8217;s Grand Power Spot【One of Japan&#8217;s Three Great Inari Shrines, Business Prosperity, Access &#038; Area Info】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2581-1.jpg
+    2. pixabay-2581-2.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+ID:2580 [yutoku-inari-jinja] - ✅ 適切
+  タイトル: 祐徳稲荷神社 | 佐賀県のパワースポット完全ガイド【日本三大稲荷・商売繁盛・アクセス情報】
+  画像数: 2枚
+  ファイル:
+    1. pixabay-2580-1.jpg
+    2. pixabay-2580-2.jpg
+  判定理由: pixabay/pexels画像 2枚
+
+================================================================================
+検証サマリー
+================================================================================
+✅ 適切:   20件
+⚠️ 要確認: 0件
+❌ 問題あり: 0件
+合計:     20件
+
+================================================================================
+画像ソース統計
+================================================================================
+Pixabay画像:  40枚
+Pexels画像:   0枚
+その他:       0枚
+総画像数:     40枚
+1投稿あたり平均: 2.0枚
+
+【結果】
+✅ すべての投稿で画像が適切に設定されています！
+✅ Pixabay/Pexelsからの高品質な画像が使用されています
+✅ 各投稿に2枚以上の画像が含まれています
