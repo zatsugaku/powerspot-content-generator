@@ -1,0 +1,448 @@
+/**
+ * パワースポット フィルターUI スタイル
+ *
+ * Astraテーマと調和するデザイン
+ */
+
+/* ========================================
+   フィルターパネル
+   ======================================== */
+
+.powerspot-filter {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.filter-header {
+  margin-bottom: 20px;
+}
+
+.filter-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-title::before {
+  content: '🔍';
+}
+
+/* フィルターコントロール */
+.filter-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.filter-select:hover {
+  border-color: #aaa;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #4a90a4;
+  box-shadow: 0 0 0 3px rgba(74, 144, 164, 0.15);
+}
+
+/* フィルターボタン */
+.filter-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-button-primary {
+  background: linear-gradient(135deg, #4a90a4 0%, #357a8f 100%);
+  color: #fff;
+}
+
+.filter-button-primary:hover {
+  background: linear-gradient(135deg, #357a8f 0%, #2a6070 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 144, 164, 0.3);
+}
+
+.filter-button-secondary {
+  background: #f0f0f0;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.filter-button-secondary:hover {
+  background: #e5e5e5;
+}
+
+.filter-button-icon {
+  font-size: 1rem;
+}
+
+/* ========================================
+   ステータス表示
+   ======================================== */
+
+.filter-status {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: #e8f4f8;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.status-text strong {
+  color: #4a90a4;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ddd;
+  border-top-color: #4a90a4;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  color: #c62828;
+}
+
+/* ========================================
+   検索結果
+   ======================================== */
+
+.powerspot-results {
+  margin-top: 20px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* 投稿カード */
+.powerspot-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.powerspot-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card-image-link {
+  display: block;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.powerspot-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 16px 20px 20px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.card-title a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.card-title a:hover {
+  color: #4a90a4;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.meta-icon {
+  font-size: 0.9rem;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  background: #f0f7f9;
+  color: #4a90a4;
+  border-radius: 20px;
+}
+
+.card-link {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4a90a4;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.card-link:hover {
+  color: #357a8f;
+  text-decoration: underline;
+}
+
+/* 結果なし */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  color: #666;
+}
+
+.no-results p {
+  margin: 8px 0;
+}
+
+/* ローディングプレースホルダー */
+.loading-placeholder {
+  grid-column: 1 / -1;
+  height: 200px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 12px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ========================================
+   ページネーション
+   ======================================== */
+
+.results-pagination {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.page-btn {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.page-btn:hover {
+  background: #f5f5f5;
+  border-color: #aaa;
+}
+
+.page-btn.active {
+  background: #4a90a4;
+  color: #fff;
+  border-color: #4a90a4;
+}
+
+.page-prev,
+.page-next {
+  padding: 0 16px;
+}
+
+.page-dots {
+  color: #999;
+  padding: 0 4px;
+}
+
+/* ========================================
+   レスポンシブ
+   ======================================== */
+
+@media (max-width: 768px) {
+  .powerspot-filter {
+    padding: 16px;
+  }
+
+  .filter-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-actions {
+    margin-top: 8px;
+  }
+
+  .filter-button {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .page-btn {
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-title {
+    font-size: 1.1rem;
+  }
+
+  .card-content {
+    padding: 12px 16px 16px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+}
+
+/* ========================================
+   ダークモード対応（オプション）
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  .powerspot-filter {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+    border-color: #404040;
+  }
+
+  .filter-title {
+    color: #eee;
+  }
+
+  .filter-group label {
+    color: #bbb;
+  }
+
+  .filter-select {
+    background-color: #333;
+    border-color: #555;
+    color: #eee;
+  }
+
+  .filter-status {
+    background: #2a3a40;
+    color: #ddd;
+  }
+
+  .powerspot-card {
+    background: #2d2d2d;
+  }
+
+  .card-title a {
+    color: #eee;
+  }
+
+  .no-results {
+    background: #1e1e1e;
+    color: #aaa;
+  }
+}
