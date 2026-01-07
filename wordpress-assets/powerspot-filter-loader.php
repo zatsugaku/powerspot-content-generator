@@ -36,7 +36,7 @@ add_action('wp_enqueue_scripts', function() {
         'powerspot-filter',
         $base_url . '/powerspot-filter.css',
         [],
-        '1.0.0'
+        '1.1.0'
     );
 
     // JavaScript読み込み
@@ -44,9 +44,80 @@ add_action('wp_enqueue_scripts', function() {
         'powerspot-filter',
         $base_url . '/powerspot-filter.js',
         [],
-        '1.0.0',
+        '1.1.0',
         true // フッターで読み込み
     );
+});
+
+/**
+ * noscriptフォールバック: JavaScript無効時の基本フィルター
+ */
+add_action('wp_footer', function() {
+    if (!is_post_type_archive('powerspot') && !is_tax(['powerspot_area', 'powerspot_benefit', 'powerspot_type'])) {
+        return;
+    }
+
+    // タクソノミーを取得
+    $areas = get_terms(['taxonomy' => 'powerspot_area', 'hide_empty' => true]);
+    $benefits = get_terms(['taxonomy' => 'powerspot_benefit', 'hide_empty' => true]);
+    $types = get_terms(['taxonomy' => 'powerspot_type', 'hide_empty' => true]);
+
+    ?>
+    <noscript>
+        <style>
+            .powerspot-filter-noscript {
+                background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+                border: 1px solid #e0e0e0;
+                border-radius: 12px;
+                padding: 24px;
+                margin-bottom: 30px;
+            }
+            .powerspot-filter-noscript h3 {
+                font-size: 1.25rem;
+                margin-bottom: 16px;
+            }
+            .powerspot-filter-noscript select {
+                padding: 10px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                border-radius: 8px;
+                border: 1px solid #ddd;
+            }
+            .powerspot-filter-noscript button {
+                padding: 10px 20px;
+                background: #4a90a4;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+        </style>
+        <div class="powerspot-filter-noscript">
+            <h3>パワースポットを絞り込む</h3>
+            <form method="get" action="<?php echo esc_url(get_post_type_archive_link('powerspot')); ?>">
+                <select name="powerspot_area">
+                    <option value="">すべてのエリア</option>
+                    <?php foreach ($areas as $area): ?>
+                        <option value="<?php echo esc_attr($area->term_id); ?>"><?php echo esc_html($area->name); ?> (<?php echo $area->count; ?>)</option>
+                    <?php endforeach; ?>
+                </select>
+                <select name="powerspot_benefit">
+                    <option value="">すべてのご利益</option>
+                    <?php foreach ($benefits as $benefit): ?>
+                        <option value="<?php echo esc_attr($benefit->term_id); ?>"><?php echo esc_html($benefit->name); ?> (<?php echo $benefit->count; ?>)</option>
+                    <?php endforeach; ?>
+                </select>
+                <select name="powerspot_type">
+                    <option value="">すべてのタイプ</option>
+                    <?php foreach ($types as $type): ?>
+                        <option value="<?php echo esc_attr($type->term_id); ?>"><?php echo esc_html($type->name); ?> (<?php echo $type->count; ?>)</option>
+                    <?php endforeach; ?>
+                </select>
+                <button type="submit">絞り込む</button>
+            </form>
+        </div>
+    </noscript>
+    <?php
 });
 
 /**

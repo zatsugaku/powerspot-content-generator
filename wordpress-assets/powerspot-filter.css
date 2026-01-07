@@ -255,9 +255,10 @@
   display: inline-block;
   padding: 4px 10px;
   font-size: 0.75rem;
-  background: #f0f7f9;
-  color: #4a90a4;
+  background: #e3f2fd;
+  color: #1565c0;  /* WCAG AA準拠: コントラスト比 6.5:1以上 */
   border-radius: 20px;
+  font-weight: 500;
 }
 
 .card-link {
@@ -360,6 +361,28 @@
    レスポンシブ
    ======================================== */
 
+/* iPad / タブレット向け（768px-1024px） */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .powerspot-filter {
+    padding: 20px;
+  }
+
+  .filter-controls {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filter-actions {
+    grid-column: span 2;
+    justify-content: center;
+  }
+
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* モバイル向け（768px以下） */
 @media (max-width: 768px) {
   .powerspot-filter {
     padding: 16px;
@@ -390,6 +413,7 @@
   }
 }
 
+/* 小型モバイル向け（480px以下） */
 @media (max-width: 480px) {
   .filter-title {
     font-size: 1.1rem;

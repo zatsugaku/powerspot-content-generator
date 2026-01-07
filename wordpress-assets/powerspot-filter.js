@@ -97,16 +97,16 @@
    * フィルターUIを作成
    */
   function createFilterUI(container) {
-    // フィルターHTML
+    // フィルターHTML（ARIA属性追加でアクセシビリティ向上）
     const filterHTML = `
-      <div class="powerspot-filter" id="powerspot-filter">
+      <div class="powerspot-filter" id="powerspot-filter" role="search" aria-label="パワースポット検索フィルター">
         <div class="filter-header">
-          <h3 class="filter-title">パワースポットを絞り込む</h3>
+          <h3 class="filter-title" id="filter-title">パワースポットを絞り込む</h3>
         </div>
-        <div class="filter-controls">
+        <div class="filter-controls" role="group" aria-labelledby="filter-title">
           <div class="filter-group">
-            <label for="filter-area">エリア</label>
-            <select id="filter-area" class="filter-select">
+            <label for="filter-area" id="label-area">エリア</label>
+            <select id="filter-area" class="filter-select" aria-labelledby="label-area" aria-describedby="filter-status">
               <option value="">すべてのエリア</option>
               ${state.taxonomyData.areas.map(a =>
                 `<option value="${a.id}" ${state.filters.area == a.id ? 'selected' : ''}>${a.name} (${a.count})</option>`
@@ -115,8 +115,8 @@
           </div>
 
           <div class="filter-group">
-            <label for="filter-benefit">ご利益</label>
-            <select id="filter-benefit" class="filter-select">
+            <label for="filter-benefit" id="label-benefit">ご利益</label>
+            <select id="filter-benefit" class="filter-select" aria-labelledby="label-benefit" aria-describedby="filter-status">
               <option value="">すべてのご利益</option>
               ${state.taxonomyData.benefits.map(b =>
                 `<option value="${b.id}" ${state.filters.benefit == b.id ? 'selected' : ''}>${b.name} (${b.count})</option>`
@@ -125,8 +125,8 @@
           </div>
 
           <div class="filter-group">
-            <label for="filter-type">タイプ</label>
-            <select id="filter-type" class="filter-select">
+            <label for="filter-type" id="label-type">タイプ</label>
+            <select id="filter-type" class="filter-select" aria-labelledby="label-type" aria-describedby="filter-status">
               <option value="">すべてのタイプ</option>
               ${state.taxonomyData.types.map(t =>
                 `<option value="${t.id}" ${state.filters.type == t.id ? 'selected' : ''}>${t.name} (${t.count})</option>`
@@ -135,23 +135,23 @@
           </div>
 
           <div class="filter-actions">
-            <button type="button" id="filter-search" class="filter-button filter-button-primary">
-              <span class="filter-button-icon">🔍</span>
+            <button type="button" id="filter-search" class="filter-button filter-button-primary" aria-label="選択した条件で絞り込む">
+              <span class="filter-button-icon" aria-hidden="true">🔍</span>
               絞り込む
             </button>
-            <button type="button" id="filter-reset" class="filter-button filter-button-secondary">
+            <button type="button" id="filter-reset" class="filter-button filter-button-secondary" aria-label="フィルターをリセット">
               リセット
             </button>
           </div>
         </div>
 
-        <div id="filter-status" class="filter-status" style="display: none;"></div>
+        <div id="filter-status" class="filter-status" style="display: none;" role="status" aria-live="polite" aria-atomic="true"></div>
       </div>
 
-      <div id="powerspot-results" class="powerspot-results" style="display: none;">
+      <div id="powerspot-results" class="powerspot-results" style="display: none;" aria-label="検索結果">
         <div id="results-header" class="results-header"></div>
-        <div id="results-grid" class="results-grid"></div>
-        <div id="results-pagination" class="results-pagination"></div>
+        <div id="results-grid" class="results-grid" role="list" aria-label="パワースポット一覧"></div>
+        <div id="results-pagination" class="results-pagination" role="navigation" aria-label="ページネーション"></div>
       </div>
     `;
 
@@ -320,8 +320,8 @@
       return;
     }
 
-    // 投稿カードを生成
-    elements.resultsGrid.innerHTML = posts.map(post => {
+    // 投稿カードを生成（ARIA role="listitem" 追加）
+    elements.resultsGrid.innerHTML = posts.map((post, index) => {
       const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0];
       const imageUrl = featuredMedia?.media_details?.sizes?.medium?.source_url ||
                        featuredMedia?.source_url ||
@@ -333,30 +333,33 @@
       const benefitTerms = allTerms.filter(t => t.taxonomy === 'powerspot_benefit');
 
       return `
-        <article class="powerspot-card">
-          <a href="${post.link}" class="card-image-link">
-            <img src="${imageUrl}" alt="${post.title.rendered}" class="card-image" loading="lazy">
+        <article class="powerspot-card" role="listitem" aria-label="${post.title.rendered}">
+          <a href="${post.link}" class="card-image-link" aria-hidden="true" tabindex="-1">
+            <img src="${imageUrl}" alt="" class="card-image" loading="lazy">
           </a>
           <div class="card-content">
             <h2 class="card-title">
               <a href="${post.link}">${post.title.rendered}</a>
             </h2>
             ${areaTerms.length > 0 ? `
-              <div class="card-meta">
-                <span class="meta-icon">📍</span>
+              <div class="card-meta" aria-label="所在地">
+                <span class="meta-icon" aria-hidden="true">📍</span>
                 ${areaTerms.map(t => t.name).join(', ')}
               </div>
             ` : ''}
             ${benefitTerms.length > 0 ? `
-              <div class="card-tags">
+              <div class="card-tags" aria-label="ご利益">
                 ${benefitTerms.slice(0, 3).map(t => `<span class="tag">${t.name}</span>`).join('')}
               </div>
             ` : ''}
-            <a href="${post.link}" class="card-link">詳しく見る →</a>
+            <a href="${post.link}" class="card-link" aria-label="${post.title.rendered}の詳細を見る">詳しく見る →</a>
           </div>
         </article>
       `;
     }).join('');
+
+    // 構造化データ（schema.org ItemList）を生成
+    renderStructuredData(posts, totalPosts);
 
     // ページネーション
     renderPagination();
@@ -447,6 +450,60 @@
 
     const newURL = params.toString() ? `?${params.toString()}` : window.location.pathname;
     window.history.replaceState({}, '', newURL);
+  }
+
+  /**
+   * 構造化データ（schema.org ItemList）を生成・挿入
+   * SEO向上のためのリッチスニペット対応
+   */
+  function renderStructuredData(posts, totalPosts) {
+    // 既存の構造化データを削除
+    const existingScript = document.getElementById('powerspot-structured-data');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    if (posts.length === 0) return;
+
+    // ItemListスキーマを構築
+    const itemList = {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      'name': 'パワースポット検索結果',
+      'description': `日本のパワースポット一覧（${totalPosts}件）`,
+      'numberOfItems': totalPosts,
+      'itemListElement': posts.map((post, index) => {
+        const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0];
+        const imageUrl = featuredMedia?.source_url || '';
+        const terms = post._embedded?.['wp:term'] || [];
+        const allTerms = terms.flat();
+        const areaTerms = allTerms.filter(t => t.taxonomy === 'powerspot_area');
+
+        return {
+          '@type': 'ListItem',
+          'position': (state.page - 1) * CONFIG.postsPerPage + index + 1,
+          'item': {
+            '@type': 'TouristAttraction',
+            '@id': post.link,
+            'name': post.title.rendered.replace(/<[^>]*>/g, ''),
+            'url': post.link,
+            'image': imageUrl || undefined,
+            'address': areaTerms.length > 0 ? {
+              '@type': 'PostalAddress',
+              'addressRegion': areaTerms[0].name,
+              'addressCountry': 'JP'
+            } : undefined
+          }
+        };
+      })
+    };
+
+    // JSON-LDスクリプトを挿入
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'powerspot-structured-data';
+    script.textContent = JSON.stringify(itemList);
+    document.head.appendChild(script);
   }
 
   // DOMContentLoaded で初期化
