@@ -1,0 +1,308 @@
+/**
+ * パワースポット相性診断ウィジェット スタイル
+ * k005.net専用
+ */
+
+/* ウィジェットコンテナ */
+.powerspot-diagnosis-widget {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 32px;
+  margin: 40px 0;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+}
+
+.powerspot-diagnosis-widget h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.powerspot-diagnosis-widget > p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 24px 0;
+  font-size: 1rem;
+}
+
+/* フォーム */
+.diagnosis-form {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.form-group input::placeholder {
+  color: #999;
+}
+
+.form-hint {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* 送信ボタン */
+.diagnosis-submit {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.diagnosis-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.diagnosis-submit:active {
+  transform: translateY(0);
+}
+
+/* 結果コンテナ */
+.diagnosis-result-container {
+  display: none;
+  margin-top: 24px;
+}
+
+.diagnosis-result {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 結果セクション */
+.result-section {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.result-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.result-section h4 {
+  color: #333;
+  font-size: 1.1rem;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.result-section h4::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+/* 縁タイプバッジ */
+.entype-badge {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 50px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.entype-description {
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* 相性スコア */
+.compatibility-score {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.compatibility-score .stars {
+  font-size: 1.8rem;
+  color: #FFD700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.compatibility-score .score-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.compatibility-comment {
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+/* タイミングセクション */
+.timing-section p {
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+  padding: 16px;
+  background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+  border-radius: 8px;
+}
+
+/* CTAセクション */
+.cta-section {
+  text-align: center;
+  padding-top: 24px !important;
+}
+
+.cta-section h4 {
+  justify-content: center;
+}
+
+.cta-section h4::before {
+  display: none;
+}
+
+.cta-section p {
+  color: #666;
+  margin: 0 0 20px 0;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 16px 40px;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(255, 107, 107, 0.5);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .powerspot-diagnosis-widget {
+    padding: 24px 20px;
+    margin: 24px 0;
+  }
+
+  .powerspot-diagnosis-widget h3 {
+    font-size: 1.3rem;
+  }
+
+  .diagnosis-form {
+    padding: 20px 16px;
+  }
+
+  .entype-badge {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .compatibility-score {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .compatibility-score .stars {
+    font-size: 1.5rem;
+  }
+
+  .compatibility-score .score-number {
+    font-size: 1.5rem;
+  }
+
+  .cta-button {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.diagnosis-result-container[style*="display: block"] .diagnosis-result {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* アクセシビリティ */
+.diagnosis-form input:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}
+
+.diagnosis-submit:focus-visible,
+.cta-button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}

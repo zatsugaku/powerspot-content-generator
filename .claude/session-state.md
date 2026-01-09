@@ -1,165 +1,129 @@
-# セッション状態 - 2026-01-07
+# セッション状態 - 2026-01-09
 
 ## 最終更新
-- 日時: 2026-01-08
+- 日時: 2026-01-09
 - ブランチ: main
-- 作業内容: k005.net専用パワースポット相性診断サービス設計完了
+- 作業内容: 英語記事SEO最適化完了
 
 ## 現在の状況
 
-Phase 2（高優先）の主要タスク完了。CTA戦略を根本的に再設計し、enguide.infoとは完全に切り離したk005.net専用の「パワースポット相性診断」サービスを設計。
+インバウンド向け英語記事のSEO最適化を完了。Rank Math APIを使用して40件全ての英語記事にSEOメタを設定。
 
-**重要な決定事項**:
-- enguide.info（縁診断）: SNS DM個別相談サービス（¥5,000）として独立運用
-- k005.net: 独自の無料簡易診断 → 有料パワースポット詳細診断（¥980）の流れを構築
+## 今回のセッションで完了した作業
 
-## 進捗状況
+### 1. インバウンド市場分析
 
-### Phase 0: 緊急対応（完了）
-- [x] 空の固定ページ削除（150件）
-- [x] リダイレクト設定（39件）
-- [x] アイキャッチ画像追加（80件）
+Search Consoleデータを分析し、英語記事の可能性を確認：
+- 伊勢神宮EN記事: 250回表示、平均順位10.94位
+- 上位クエリ: "ise jingu photography prohibited"（5-6位）、"ise jingu pets allowed"（4位）
+- 結論: インバウンド向けサービスは可能性あり
 
-### Phase 1: 最優先改善（完了）
-- [x] タクソノミー構造調査
-- [x] 空ターム削除（10件）
-- [x] ナビゲーションメニュー構築（25項目、ドロップダウン対応）
-- [x] サイト内検索機能追加（ヘッダーウィジェット）
-- [x] 目次（TOC）プラグイン導入（Easy Table of Contents）
-- [x] **フィルターUI実装（v1.1）**
-  - ARIA属性追加（アクセシビリティ向上）
-  - タグのコントラスト比改善（WCAG AA準拠）
-  - 構造化データ（schema.org ItemList）追加
-  - iPad向けレスポンシブ改善
-  - noscriptフォールバック追加
+### 2. 伊勢神宮EN記事の大幅強化
 
-### Phase 2: 高優先（進行中）
-- [x] **エリア別ピラーページ作成（9本）** ✅ 完了
-  - 北海道: https://k005.net/hokkaido-powerspot/ (ID: 3127)
-  - 東北: https://k005.net/tohoku-powerspot/ (ID: 3128)
-  - 関東: https://k005.net/kanto-powerspot/ (ID: 3129)
-  - 中部: https://k005.net/chubu-powerspot/ (ID: 3130)
-  - 近畿: https://k005.net/kinki-powerspot/ (ID: 3131)
-  - 中国: https://k005.net/chugoku-powerspot/ (ID: 3132)
-  - 四国: https://k005.net/shikoku-powerspot/ (ID: 3133)
-  - 九州: https://k005.net/kyushu-powerspot/ (ID: 3136)
-  - 沖縄: https://k005.net/okinawa-powerspot/ (ID: 3137)
-  - ※旧・九州沖縄結合版 (ID: 3134) は下書きに変更済み
-- [x] **ご利益別ピラーページ作成（10本）** ✅ 完了
-  - 縁結び・恋愛運: /enmusubi-powerspot/ (ID: 3138)
-  - 金運・仕事運: /kinun-powerspot/ (ID: 3139)
-  - 健康・病気平癒: /kenko-powerspot/ (ID: 3140)
-  - 厄除け・開運: /yakuyoke-powerspot/ (ID: 3141)
-  - 子宝・安産: /kodakara-powerspot/ (ID: 3142)
-  - 家内安全: /kanai-anzen-powerspot/ (ID: 3143)
-  - 商売繁盛: /shoubai-hanjo-powerspot/ (ID: 3144)
-  - 交通安全: /kotsu-anzen-powerspot/ (ID: 3145)
-  - 学業成就: /gakugyo-powerspot/ (ID: 3146)
-  - 心願成就: /shingan-powerspot/ (ID: 3147)
-- [x] **CTA戦略の再設計** ✅ 設計完了
-  - enguide.infoとの切り離し決定
-  - k005.net独自の「パワースポット相性診断」サービス設計
-  - 設計書: `k005-powerspot-diagnosis-design.md`
-- [ ] パワースポット相性診断の実装（Phase 1: 無料簡易診断）
-- [ ] 絵文字をアイコンに置換
-- [ ] 運営者情報の明記
+**追加セクション:**
+- `## Photography Rules at Ise Jingu` - 撮影禁止の正確な境界線、理由、撮影可能スポット表
+- `## Pet Policy at Ise Jingu` - 具体的なペットホテル4件（名前・料金・特徴）、サンプル行程
+- FAQ拡充（Q5-Q10）
 
-### Phase 3: 中優先（未着手）
-- [ ] ランキングページ作成
-- [ ] 内部リンクの強化
-- [ ] お気に入り機能
-- [ ] キャッチコピー刷新
+**一流Webライター視点での改善:**
+- 具体性向上: 「Several pet hotels」→ 実名・料金・連絡先
+- 差別化: 他サイトにない詳細情報
+- 実用性: すぐ行動できる情報
 
-### Phase 4: 低優先（未着手）
-- [ ] 口コミ・評価機能
-- [ ] スポット別ミニ相性診断
-- [ ] 地図機能
-- [ ] オリジナル画像・動画
+### 3. Rank Math SEO設定
 
-## 次にやること
+**プラグイン導入:**
+- Rank Math SEOインストール・有効化
+- カスタム投稿タイプ「powerspot」でRank Math有効化
 
-### パワースポット相性診断の実装
+**API連携確立:**
+- `/wp-json/rankmath/v1/updateMeta` エンドポイント発見
+- 一括更新スクリプト作成: `bulk-seo-update.js`
 
-設計書: `k005-powerspot-diagnosis-design.md`
+**全40件の英語記事にSEOメタ設定:**
+| 記事例 | SEO Title |
+|--------|-----------|
+| 伊勢神宮 | Ise Jingu Guide 2026: Photo Rules, Pet Policy & Insider Tips |
+| 伏見稲荷 | Fushimi Inari 2026: 10,000 Red Torii Gates Hiking Guide |
+| 箱根神社 | Hakone Shrine 2026: Lakeside Torii, Best Photos & Spiritual Guide |
+| 厳島神社 | Itsukushima Shrine 2026: Miyajima's Floating Torii Guide |
 
-#### Phase 1: 無料簡易診断（記事内ウィジェット）
-1. 60タイプ判定ロジックの実装
-2. パワースポット相性計算アルゴリズムの定義
-3. WordPress ウィジェットの作成
-4. 記事テンプレートへの組み込み
+### 4. Code Snippets追加
 
-#### Phase 2: 有料詳細診断（¥980）
-1. Stripe決済連携
-2. 詳細診断ロジック実装
-3. 結果表示画面作成
-4. PDF生成機能
-
-### その他Phase 2残タスク
-- 絵文字をアイコンに置換
-- 運営者情報の明記
-
-## 作成されたスクリプト・ファイル
-
-### Phase 1で作成
-| ファイル | 用途 |
-|---------|------|
-| `cleanup-taxonomies.js` | 空タクソノミー削除 |
-| `generate-menu-structure.js` | メニュー構造生成 |
-| `setup-wordpress-navigation.js` | ナビゲーション設定 |
-| `deploy-filter-ui.js` | フィルターUIデプロイ |
-| `update-code-snippet.js` | Code Snippets更新 |
-| `wordpress-assets/powerspot-filter.js` | フィルターUI（v1.1） |
-| `wordpress-assets/powerspot-filter.css` | フィルターUIスタイル |
-| `wordpress-assets/powerspot-filter-loader.php` | PHPローダー |
-
-### Phase 2で作成
-| ファイル | 用途 |
-|---------|------|
-| `analyze-areas.js` | エリア別パワースポット分析 |
-| `create-area-pillar-pages.js` | エリア別ピラーページ一括作成 |
-| `create-kyushu-okinawa-pages.js` | 九州・沖縄別ページ作成 |
-| `analyze-benefits.js` | ご利益別パワースポット分析 |
-| `create-benefit-pillar-pages.js` | ご利益別ピラーページ一括作成 |
-| `fix-benefit-taxonomies.js` | ご利益タクソノミー修正・学業成就追加 |
-| `update-navigation-to-pillar.js` | ナビゲーション更新（※API権限問題あり） |
-| `k005-powerspot-diagnosis-design.md` | パワースポット相性診断サービス設計書 |
-
-## フィルターUI v1.1 改善内容
-
-| 改善項目 | Before | After |
-|---------|--------|-------|
-| ARIA属性 | なし | role="search", aria-label等追加 |
-| コントラスト比 | 3.8:1 | 6.5:1（WCAG AA準拠） |
-| 構造化データ | なし | schema.org ItemList |
-| iPadレイアウト | 1列 | 2列（768-1024px） |
-| JSなし対応 | なし | noscriptフォールバック |
-
-## API情報
-
-```
-WP_SITE_URL=https://k005.net
-WP_USERNAME=power
-PIXABAY_API_KEY=45586630-752c7bd54cc63bc798d7be07d
-PEXELS_API_KEY=uILLDNjt6qvSf2jDR4Flg0ifPnEXrTwpaRxxie28JVS7IvbiqnwhsCpr
-```
-
-## Code Snippets情報
-
-- スニペットID: 5
-- 名前: パワースポットフィルターUI v1.1
-- ステータス: active
-
-## パワースポット記事進捗
-
-- 完了: 18件（日本語・英語ペア）
-- データベース: 142件
-- 次回開始: 19件目
-
-## 参考レポート
-
-- `site-improvement-report.md` - 5名専門家による総合改善レポート
-- `competitor-analysis.md` - 競合サイト分析
+| ID | 名前 | 内容 |
+|----|------|------|
+| 7 | パワースポット相性診断API | 無料診断API（稼働中） |
+| 8 | English Powerspot SEO Meta Tags | SEOメタ出力（Rank Mathで代替） |
 
 ---
+
+## 残タスク
+
+### 高優先
+- [ ] 60タイプ詳細解説文のアップロード待ち（別PCにある）
+- [ ] 有料診断API拡張（全142スポット相性計算）
+- [ ] Stripe決済連携
+- [ ] PDF生成機能
+- [ ] 運営者情報ページ作成
+
+### 中優先
+- [ ] 他の英語記事もコンテンツ強化（伊勢神宮と同様）
+- [ ] ランキングページ作成
+- [ ] 内部リンク強化
+
+---
+
+## ビジネスモデル確認
+
+**日本語市場:**
+```
+パワースポット記事（SEO集客）
+    ↓
+無料簡易診断（記事内ウィジェット）← 実装済み
+    ↓
+有料パワースポット詳細診断（¥980）← 次のステップ
+```
+
+**インバウンド市場:**
+```
+英語パワースポット記事（SEO集客）← 40件公開済み、SEO最適化完了
+    ↓
+英語診断（$30）← 日本語版完成後に展開
+```
+
+---
+
+## 技術情報
+
+### Rank Math API
+```javascript
+// SEOメタ更新
+POST /wp-json/rankmath/v1/updateMeta
+{
+  objectID: 投稿ID,
+  objectType: 'post',
+  meta: {
+    'rank_math_title': 'タイトル',
+    'rank_math_description': 'ディスクリプション',
+    'rank_math_focus_keyword': 'キーワード'
+  }
+}
+```
+
+### 作成したスクリプト
+- `bulk-seo-update.js` - 英語記事40件のSEO一括更新
+
+---
+
+## 次回やること
+
+1. **60タイプ詳細解説文をアップロード**
+2. **有料診断の自動化実装**
+   - 全142スポットとの相性計算
+   - Stripe決済連携
+   - PDF生成
+
+---
+
 *このファイルはClaude Codeのセッション管理用です*
-*最終更新: 2026-01-07*
+*最終更新: 2026-01-09*

@@ -209,6 +209,126 @@ Ise Grand Shrine has specific protocols for proper worship that visitors should 
 - Please keep voices low
 - Take all trash with you
 
+## Photography Rules at Ise Jingu: Where You Can & Can't Take Photos
+
+Ise Grand Shrine has the strictest photography rules of any shrine in Japan. As the nation's most sacred Shinto site, the rules here are non-negotiable—and understanding them before you visit will save you embarrassment and help you plan your shots.
+
+### The Exact Boundary: Where Photography Stops
+
+**At the Inner Shrine (Naiku):**
+Photography is prohibited **from the stone steps (石段) onward**. You can take pictures only up to the bottom of the stairs leading to the main sanctuary. Beyond the outermost gate, all photography is forbidden.
+
+**At the Outer Shrine (Geku):**
+The same rule applies. Once you pass the final torii gate before the main sanctuary, put your camera away.
+
+**Important:** There may not be explicit "No Photography" signs at every point. The Japanese word to listen for is **"satsuei kinshi" (撮影禁止)**. If a shrine staff member says this to you, immediately stop taking photos.
+
+### Why Ise Jingu is Different from Other Shrines
+
+At most Japanese shrines, you can photograph the main building's facade. **Not at Ise Jingu.** Here's why:
+
+- **Sacred treasures are stored here**: The shrine houses objects too sacred for public viewing
+- **Imperial connection**: This is the ancestral shrine of the Japanese Imperial family
+- **Ritual purity**: Photography is seen as disrupting the spiritual atmosphere
+- **Tradition**: These rules have been maintained for over 1,300 years
+
+Breaking these rules isn't just rude—it's deeply disrespectful to Japanese religious culture. Staff will ask you to delete photos if you're caught.
+
+### Where You CAN Take Great Photos
+
+The good news: 90% of the shrine grounds are photo-friendly, and these areas are stunning.
+
+**Best Photo Spots (with specific locations):**
+
+| Spot | What to Capture | Best Time |
+|------|-----------------|-----------|
+| **Uji Bridge (宇治橋)** | 101.8m bridge with mountain backdrop | Sunrise (5:00-6:00 AM) |
+| **Isuzu River purification area (御手洗場)** | Crystal-clear water, stone steps | Morning light |
+| **First Torii Gate** | Massive wooden gate, approach path | Any time |
+| **Cedar tree avenue** | 400-year-old trees, dappled light | Mid-morning |
+| **Stone lanterns (燈籠)** | Rows of moss-covered lanterns | Overcast days |
+
+**Pro Tip:** The 800-meter walk from the Uji Bridge to the stone steps is entirely photo-friendly. Take your time here—this is where you'll get your best shots.
+
+### Photography Etiquette That Locals Appreciate
+
+- **Never photograph worshippers praying** without explicit permission
+- **Flash is unwelcome** even in permitted areas—it disturbs the atmosphere
+- **Tripods block pathways**—use them only before 7 AM when the shrine is nearly empty
+- **Drone photography is prohibited** throughout the shrine grounds
+- **Selfie sticks** are discouraged near sacred buildings
+
+---
+
+## Pet Policy at Ise Jingu: Guide Dogs & Service Animals
+
+**The short answer: No pets allowed. Guide dogs and service animals only.**
+
+This is non-negotiable at Ise Grand Shrine, and there's a deep cultural reason behind it.
+
+### Why Pets Are Prohibited
+
+In Shinto belief, shrine grounds must maintain **ritual purity (kegare)**. Animals—with the exception of trained service animals—are considered to potentially disrupt this purity. This isn't about hygiene; it's about spiritual cleanliness that has been maintained here for 2,000 years.
+
+**What happens if you try to bring a pet?**
+Staff will politely but firmly ask you to leave. There are no exceptions, no "small dogs in carriers" loopholes, no "I'll just carry them" workarounds.
+
+### Guide Dogs & Service Animals: Welcome
+
+**The following ARE permitted throughout the shrine:**
+- Guide dogs for the visually impaired (盲導犬)
+- Hearing dogs (聴導犬)
+- Service dogs for physical disabilities (介助犬)
+
+**No special registration is required**, but your animal should be:
+- Properly harnessed or on a leash
+- Well-behaved and under control
+- Identifiable as a service animal (vest or harness helps)
+
+### Real Solutions for Pet Owners
+
+Don't cancel your Ise Jingu visit because of your pet. Here are **verified options** near the shrine:
+
+#### Option 1: Wanpaku Jinja Ise Naiku (わんぱく神社 伊勢内宮店)
+**Best for: Day visitors to the Inner Shrine**
+- **Location:** Near the Inner Shrine (Naiku) entrance
+- **Hours:** 9:00 AM – 4:30 PM (pickup by 4:00 PM)
+- **Type:** Day care only (no overnight)
+- **Pricing:** By weight, not breed
+- **Requirements:** Rabies & vaccination certificates (copies OK)
+- **Note:** Perfect timing for a shrine visit
+
+#### Option 2: Pet Hotel Chacha
+**Best for: Overnight stays**
+- **Location:** 15 minutes from Ise Jingu by car
+- **Features:** Webcams in all rooms, daily walks, 24-hour climate control
+- **Website:** [pet-chacha.com](https://pet-chacha.com/)
+
+#### Option 3: Veterinary Clinic Hotels
+**Best for: Pets needing medical supervision**
+- **Miyagawa no Hotori Animal Hospital:** Small dogs ¥2,000/night, medium/large ¥3,000/night
+- **Iseshima Pet Clinic:** Discounts if your pet is a patient
+- **Requirements:** Vaccination records, flea/tick prevention
+
+#### Option 4: Pet-Friendly Accommodation
+**Best for: Multi-day trips**
+- **Matsushin Ryokan (二見町):** Traditional inn where pets stay in your room—free of charge
+- **Location:** Futami area, near the famous Meoto Iwa (Wedded Rocks)
+
+### Sample Itinerary for Pet Owners
+
+| Time | Activity |
+|------|----------|
+| 8:30 AM | Drop pet at Wanpaku Jinja (near Naiku) |
+| 9:00 AM | Visit Inner Shrine (Naiku) |
+| 11:00 AM | Explore Okage Yokocho, have lunch |
+| 1:00 PM | Pick up pet |
+| 2:00 PM | Drive to Futami Okitama Shrine (pets allowed in outdoor areas) |
+
+**Pro Tip:** Book pet care at least 3 days in advance during Golden Week, Obon, and New Year periods.
+
+---
+
 ## Basic Information
 
 ### Access
@@ -360,11 +480,23 @@ A: Goshuin are available at the office (授与所) after worship at both the Inn
 **Q4: Is it wheelchair accessible?**
 A: Both the Outer and Inner Shrines are barrier-free accessible, making wheelchair visits possible. However, the gravel approach paths can make wheelchair movement challenging, so traveling with an assistant is recommended.
 
-**Q5: Can I bring pets?**
-A: With the exception of guide dogs and service animals, pets are not permitted in the shrine grounds.
+**Q5: Can I bring my dog or cat to Ise Jingu?**
+A: No. Pets are strictly prohibited—no exceptions for small dogs, carriers, or "I'll just hold them." The only animals allowed are certified guide dogs and service animals. If you're traveling with a pet, use **Wanpaku Jinja** (near the Inner Shrine entrance) for day care, or **Pet Hotel Chacha** for overnight stays. See our [Pet Policy section](#pet-policy-at-ise-jingu-guide-dogs--service-animals) for verified options with prices.
 
 **Q6: Is English signage available?**
-A: Basic English signage exists at key points. The official website has English information. Consider downloading a guide app or bringing a guidebook for more detailed information.
+A: Basic English signage exists at key points. The official website has English information. Download the **Ise Jingu official app** before your visit, or pick up an English pamphlet at the shrine entrance.
+
+**Q7: Where exactly is photography prohibited?**
+A: Photography is prohibited **from the stone steps (石段) onward** at both shrines. There are no explicit signs—staff will say "satsuei kinshi" (撮影禁止) if you cross the line. The 800-meter approach, Uji Bridge, and Isuzu River are all photo-friendly. See our [Photography Rules section](#photography-rules-at-ise-jingu-where-you-can--cant-take-photos) for exact boundaries and best spots.
+
+**Q8: Can I use a tripod or drone?**
+A: Tripods are allowed in permitted areas but discouraged during busy hours (10 AM–3 PM) as they block pathways. **Drones are completely prohibited** throughout the shrine grounds. For tripod photography, visit before 7 AM.
+
+**Q9: Are guide dogs allowed at Ise Jingu?**
+A: Yes. Guide dogs (盲導犬), hearing dogs (聴導犬), and service dogs (介助犬) are welcome throughout the shrine, including sanctuary areas. No special registration required—just ensure your animal is harnessed and well-behaved.
+
+**Q10: What's the best time for photography?**
+A: **5:00–7:00 AM** for mystical mist and empty paths. The Uji Bridge at sunrise is spectacular. For seasonal beauty: late March–early April (cherry blossoms) or mid-November (autumn foliage). Overcast days are best for the cedar avenue—no harsh shadows.
 
 ## Find Your New Beginning at Ise Grand Shrine
 
@@ -378,6 +510,6 @@ When you face a turning point in life, when you want to organize your thoughts, 
 
 ---
 
-*Information current as of November 2024. Please verify the latest information on the official website before your visit.*
+*Information current as of January 2026. Please verify the latest information on the official website before your visit.*
 
 *This article is part of our Japan Power Spots series, introducing sacred and spiritually significant places throughout Japan for international visitors.*

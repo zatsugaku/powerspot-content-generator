@@ -507,3 +507,203 @@ node add-related-links.js --dry-run
 ---
 
 **このインストラクションに従えば、SEOに強く、ユーザー満足度が高く、診断アプリへの誘導も自然な、高品質なパワースポット記事が必ず作成できます。**
+
+---
+
+## 🖼️ 画像検索・検証ガイドライン
+
+### 基本ルール
+
+**🚨 検証なしでの投稿は絶対禁止**
+
+### 使用API
+
+Pexels API または Pixabay API（どちらでも可）
+
+```bash
+# Pexels API
+curl -H "Authorization: $PEXELS_API_KEY" \
+  "https://api.pexels.com/v1/search?query=キーワード&per_page=15"
+
+# Pixabay API
+curl "https://pixabay.com/api/?key=$PIXABAY_API_KEY&q=キーワード&per_page=15&image_type=photo"
+```
+
+### 検索キーワード戦略（優先順位順）
+
+| 優先度 | キーワード例 | 説明 |
+|--------|-------------|------|
+| 1️⃣ 最優先 | "Tosa Shrine Kochi", "土佐神社" | スポット固有名 |
+| 2️⃣ 高 | "Kochi shrine torii" | 地域名 + 施設タイプ |
+| 3️⃣ 中 | "Shikoku shrine" | エリア名 + 施設タイプ |
+| 4️⃣ 低 | "torii gate japan" | 汎用キーワード |
+
+### 施設タイプ別キーワード
+
+| タイプ | 推奨キーワード |
+|--------|--------------|
+| 神社 | torii gate, shrine entrance, ema wooden plaques, shimenawa rope, stone lantern shrine |
+| 寺院 | temple garden japan, buddhist temple, zen garden, temple gate |
+| 山・自然 | sacred mountain japan, forest path shrine, nature worship japan |
+| 海・湖 | lake shrine japan, ocean torii, waterside shrine |
+
+### 画像の適切性基準
+
+**✅ 使用OK（神社記事の場合）**
+- 鳥居（赤い鳥居、石の鳥居、海上鳥居）
+- 参道（石畳、木々に囲まれた参道）
+- 神社建築（拝殿、本殿、神門、楼門）
+- 神社要素（手水舎、石灯籠、狛犬、絵馬、おみくじ）
+- 注連縄、紙垂
+- 自然（文字なし）
+
+**❌ 使用NG**
+| NGパターン | 理由 |
+|-----------|------|
+| 場所特定できる文字・看板 | 別スポットと判明 |
+| 有名ランドマーク（富士山、金閣寺等） | 場所が特定される |
+| 寺と神社の混同（五重塔、仏像） | 宗教施設の混同 |
+| 地域と植生の不一致 | 不自然 |
+| 無関係な画像 | 神社と無関係 |
+
+### 検証手順（必須）
+
+```bash
+# 1. ダウンロード
+curl -sL "画像URL" -o images/spot-name-1.jpg
+
+# 2. Readツールで目視確認
+Read(file_path="images/spot-name-1.jpg")
+
+# 3. 適切性を判定
+```
+
+### 画像枚数
+
+| 用途 | 枚数 |
+|------|------|
+| 本文画像 | 3-5枚 |
+| アイキャッチ | 1枚 |
+
+---
+
+## 📤 WordPress投稿手順
+
+### 投稿コマンド
+
+```bash
+# 日本語記事
+node post-from-markdown-styled.js articles/パワースポット名.md
+
+# 英語記事
+node post-from-markdown-styled.js articles/slug-en.md
+```
+
+### 自動設定される項目
+
+- カスタム投稿タイプ: `powerspot`
+- スラッグ（URL）
+- アイキャッチ画像
+- 地域（都道府県）
+- エリア（北海道/東北/関東/...）
+- スポットタイプ（神社/寺院/山・自然/...）
+- ご利益（複数選択可）
+- 五行属性（上位2つ）
+
+### 投稿前の準備
+
+`post-from-markdown-styled.js` の `POWERSPOT_MAPPING` に追加：
+
+```javascript
+'パワースポット名': {
+  rank: 順位,
+  region: '都道府県',
+  slug: 'url-slug',
+  type: 'スポットタイプ',
+  benefits: ['ご利益1', 'ご利益2', 'ご利益3'],
+  featuredImage: 画像ID
+},
+```
+
+### 英語記事のスラッグ修正（必須）
+
+英語記事は投稿後にスラッグを短く修正する：
+
+```javascript
+// WordPress REST APIでスラッグを更新
+axios.post(WP_SITE_URL + '/wp-json/wp/v2/powerspot/' + postId,
+  { slug: 'spot-name-en' },
+  { headers: { Authorization: 'Basic ' + auth } }
+);
+```
+
+命名規則: `{日本語記事のスラッグ}-en`
+
+### 英語記事の言語設定（手動・必須）
+
+Polylang無料版の制限により、REST APIでの言語設定は不可。
+WordPress管理画面で手動で「English」を選択すること。
+
+### 投稿確認
+
+```bash
+node check-post.js [投稿ID]
+```
+
+---
+
+## ✅ 完全ワークフロー
+
+「次の記事を作成して」と依頼された場合の全手順：
+
+### Step 1: 対象パワースポットの特定
+
+```bash
+node generate-from-db.js 1 [開始位置]
+```
+
+`articles/` フォルダを確認し、未作成のスポットを選択。
+
+### Step 2: 日本語記事の作成
+
+- 本インストラクションに従い作成
+- 4,500-5,000文字
+- 保存先: `articles/パワースポット名.md`
+
+### Step 3: 英語記事の作成
+
+- 日本語記事を翻訳（英語圏読者向けに適応）
+- 保存先: `articles/slug-en.md`
+
+### Step 4: 画像の検索・検証・アップロード
+
+1. 複数キーワードで検索
+2. ダウンロード
+3. **Readツールで1枚ずつ目視確認**（必須）
+4. WordPressにアップロード
+5. 画像IDを記録
+
+### Step 5: POWERSPOT_MAPPING更新
+
+`post-from-markdown-styled.js` に追加
+
+### Step 6: WordPress投稿
+
+```bash
+node post-from-markdown-styled.js articles/パワースポット名.md
+node post-from-markdown-styled.js articles/slug-en.md
+```
+
+### Step 7: 英語記事のスラッグ修正
+
+### Step 8: 投稿確認
+
+```bash
+node check-post.js [投稿ID]
+```
+
+### Step 9: 検証
+
+- 記事品質チェック
+- 画像の最終確認
+- WordPress設定確認
